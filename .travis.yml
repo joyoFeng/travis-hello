@@ -1,0 +1,35 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      sudo: required
+      env: TYPE=Debug
+
+    - os: linux
+      dist: xenial
+      sudo: required
+      env: TYPE=Release
+
+    #- os: osx
+    #  sudo: required
+    #  env: 
+    #    - TYPE=Release
+    #    - OPENSSL_ROOT_DIR=/usr/local/opt/openssl/
+
+    #- os: osx
+    #  sudo: required
+    #  env: 
+    #    - TYPE=Debug
+    #    - OPENSSL_ROOT_DIR=/usr/local/opt/openssl/
+      
+before_install:
+  - eval "${MATRIX_EVAL}"
+  - git clone https://github.com/joyeFeng/travis-hello.git && cd travis-hello
+  - g++ hello_add.cpp -o hell_add
+
+script:
+  - echo "run add(a,b)..."
+  - ./hello_add
+  - echo "run add(a,b) ending."
