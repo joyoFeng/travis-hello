@@ -27,7 +27,7 @@ matrix:
 before_install:
   - eval "${MATRIX_EVAL}"
   #- git clone https://github.com/joyeFeng/travis-hello.git && cd travis-hello
-  - g++ hello_add.cpp -o hello_add
+  - bash compile.sh
 
 script:
   - echo "run add(a,b)..."
